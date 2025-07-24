@@ -10,12 +10,14 @@ import MapKit
 import CoreLocation
 
 struct StationDetailView: View {
-    @State private var position = MapCameraPosition.region(.init(center: .init(), latitudinalMeters: 0, longitudinalMeters: 0))
     var model: Station
-    var coordinate: CLLocationCoordinate2D {
+    @State private var position = MapCameraPosition.region(.init(center: .init(), latitudinalMeters: 0, longitudinalMeters: 0))
+    private var coordinate: CLLocationCoordinate2D {
         .init(latitude: model.latitude, longitude: model.longitude)
     }
-    private let background: Color = Color("green_background")
+    private var primaryColor: Color{
+        model.availableBikes > 0 ? Color("green_background") : .red
+    }
     var body: some View {
         VStack(spacing: -10){
             mapContent
@@ -26,7 +28,7 @@ struct StationDetailView: View {
         .didAppear{
             position = .region(.init(center: coordinate, span: .init(latitudeDelta: 0.001, longitudeDelta: 0.001)))
         }
-        .background(background)
+        .background(primaryColor)
     }
     
     private var mapContent: some View {
@@ -67,7 +69,7 @@ struct StationDetailView: View {
         .frame(height: Constants.screenHeight * 0.25)
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
-        .background(background)
+        .background(primaryColor)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .safeAreaInset(edge: .bottom) {
             Button(action: drivingAction){

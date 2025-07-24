@@ -18,6 +18,6 @@ struct StationDTO: Decodable{
     let name: String
     let latitude: Double
     let longitude: Double
-    let free_bikes: String
-    let empty_slots: String
+    let free_bikes: Int
+    let empty_slots: Int
 }

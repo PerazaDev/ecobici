@@ -9,9 +9,13 @@ import SwiftUI
 
 struct StationsView: View {
     @State private var showLogoutAlert = false
+    @StateObject private var viewModel: StationsViewModel = .Factory.build()
     var body: some View {
         NavigationStack {
             content
+                .task {
+                    await viewModel.getStations(isLoading: true)
+                }
                 .navigationTitle("Estaciones")
                 .alert("Cerrar sesión", isPresented: $showLogoutAlert){
                     Button("Si", role: .destructive, action: logoutAction)
@@ -34,16 +38,21 @@ struct StationsView: View {
     
     private var content: some View{
         List{
-            ForEach((1..<5)) { item in
+            ForEach(viewModel.stations, id: \.id) { station in
                 NavigationLink{
-                    StationDetailView(model: .init(id: "0", name: "CE-015 Reforma - Río Mississippi Mississippi ", latitude: 0.0, longitude: 0.0, availableBikes: 2, availablePlaces: 2))
+                    StationDetailView(model: station)
                 }label: {
-                    Cell(model: .init(id: "0", name: "CE-015 Reforma - Río Mississippi Mississippi ", latitude: 0.0, longitude: 0.0, availableBikes: 0, availablePlaces: 2))
+                    Cell(model: station)
                 }
             }
         }
+        .overlay{
+            if viewModel.isLoading{
+                ProgressView()
+            }
+        }
         .refreshable {
-            
+            await viewModel.getStations()
         }
     }
     private func logoutAction() {
