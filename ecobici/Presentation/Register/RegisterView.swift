@@ -17,7 +17,7 @@ struct RegisterView: View {
     @FocusState private var isEmailFocused: Bool
     @FocusState private var isPasswordFocused: Bool
     @FocusState private var isConfirmPasswordFocused: Bool
-    private var isCompleted: Bool { email.isValidEmail && !password.isEmpty && confirmPassword.elementsEqual(password) }
+    private var isCompleted: Bool { email.isValidEmail && password.count >= 6 && confirmPassword.elementsEqual(password) }
     var body: some View {
         ScrollView {
             content
@@ -40,9 +40,15 @@ struct RegisterView: View {
             TextField("Correo electrónico", text: $email)
                 .focused($isEmailFocused)
                 .setBackgroundField(isFocused: isEmailFocused)
+                .keyboardType(.emailAddress)
                 .onSubmit {
                     isPasswordFocused = true
                 }
+            HStack{
+                Text("La contraseña debe ser mayor a 6 caracteres*")
+                    .font(.callout)
+                Spacer()
+            }
             TextField("Contraseña", text: $password)
                 .setBackgroundField(isFocused: isConfirmPasswordFocused)
                 .focused($isPasswordFocused)

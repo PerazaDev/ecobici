@@ -77,6 +77,7 @@ struct LoginView: View {
             TextField("Correo electrónico", text: $email)
                 .focused($isEmailFocused)
                 .setBackgroundField(isFocused: isEmailFocused)
+                .keyboardType(.emailAddress)
                 .onSubmit {
                     isPasswordFocused = true
                 }
