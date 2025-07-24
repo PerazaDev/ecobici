@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RegisterView: View {
     @EnvironmentObject private var appState: AppState
+    @StateObject private var viewModel: RegisterViewModel = .Factory.build()
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
@@ -22,6 +23,9 @@ struct RegisterView: View {
             content
         }
         .navigationTitle("Registro")
+        .onReceive(viewModel.isRegistered) { _ in
+            appState.validateUser()
+        }
     }
     
     private var content: some View{
@@ -66,6 +70,11 @@ struct RegisterView: View {
             .padding(.top)
         }
         .padding()
+        .overlay {
+            if viewModel.isloading{
+                ProgressView()
+            }
+        }
     }
     
     private var passwordField: some View{
@@ -87,7 +96,9 @@ struct RegisterView: View {
     
  
     private func signupAction() {
-        appState.user = .init(coder: .init())
+        Task{
+            await viewModel.signup(email: email, password: password)
+        }
     }
 }
 

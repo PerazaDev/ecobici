@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct StationsView: View {
-    @State private var showLogoutAlert = false
+    @EnvironmentObject private var appState: AppState
     @StateObject private var viewModel: StationsViewModel = .Factory.build()
+    @State private var showLogoutAlert = false
     var body: some View {
         NavigationStack {
             content
@@ -32,6 +33,9 @@ struct StationsView: View {
                                 .tint(.red)
                         }
                     }
+                }
+                .onReceive(viewModel.isUnlogged) { _ in
+                    appState.validateUser()
                 }
         }
     }

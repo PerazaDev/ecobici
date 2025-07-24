@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 struct LoginView: View {
     @EnvironmentObject private var appState: AppState
+    @StateObject private var viewModel: LoginViewViewModel = .Factory.build()
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isVisiblePassword: Bool = false
@@ -21,6 +22,9 @@ struct LoginView: View {
             ScrollView {
                 content
             }
+        }
+        .onReceive(viewModel.isLogged) { _ in
+            appState.validateUser()
         }
     }
     
@@ -62,6 +66,11 @@ struct LoginView: View {
             }
         }
         .padding()
+        .overlay {
+            if viewModel.isloading{
+                ProgressView()
+            }
+        }
     }
     private var fields: some View{
         Group{
@@ -97,6 +106,9 @@ struct LoginView: View {
     }
     
     private func loginAction() {
+        Task{
+            await viewModel.login(email: email, password: password)
+        }
     }
 }
 
