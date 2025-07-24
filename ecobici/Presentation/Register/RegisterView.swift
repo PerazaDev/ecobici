@@ -27,7 +27,7 @@ struct RegisterView: View {
     private var content: some View{
         VStack(spacing: 20){
             Text("Ecobici")
-                .font(.system(size: 34, weight: .medium))
+                .font(.system(size: 36, weight: .medium, design: .monospaced))
                 .foregroundStyle(.green.opacity(0.7))
             Image("ecobici_logo")
                 .resizable()

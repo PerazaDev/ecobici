@@ -27,7 +27,7 @@ struct LoginView: View {
     private var content: some View{
         VStack(spacing: 20){
             Text("Ecobici")
-                .font(.system(size: 34, weight: .medium))
+                .font(.system(size: 36, weight: .medium, design: .monospaced))
                 .foregroundStyle(.green.opacity(0.7))
             Image("ecobici_logo")
                 .resizable()
@@ -51,12 +51,13 @@ struct LoginView: View {
                 .padding(.horizontal)
                 .padding(.horizontal)
 
-            Text("¿No tienes un cuenta?")
+            Text("¿No tienes una cuenta?")
+                .font(.system(size: 16, weight: .medium, design: .monospaced))
                 .foregroundStyle(.black.opacity(0.8))
             NavigationLink{
                 RegisterView()
             }label: {
-                Text("Regístrate")
+                Text("Regístrate aquí")
                     .underline()
             }
         }
