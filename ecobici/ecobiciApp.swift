@@ -11,7 +11,7 @@ import FirebaseAuth
 @main
 struct ecobiciApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject private var appState: Appstate = .init()
+    @StateObject private var appState: AppState = .init()
     @State private var isLaunching: Bool = true
     var body: some Scene {
         WindowGroup {

@@ -8,12 +8,10 @@
 import Foundation
 import FirebaseAuth
 
-extension ecobiciApp {
-    class Appstate: ObservableObject {
-        @Published var user: User?
-        var isLogged: Bool { user != nil }
-        init() {
-            self.user = Auth.auth().currentUser
-        }
+class AppState: ObservableObject {
+    @Published var user: User?
+    var isLogged: Bool { user != nil }
+    init() {
+        self.user = Auth.auth().currentUser
     }
 }

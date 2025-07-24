@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		97AF980D2E31ACFB00A3903E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 97AF980C2E31ACFB00A3903E /* FirebaseAuth */; };
+		97AF98552E31E63E00A3903E /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 97AF98542E31E63E00A3903E /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97AF980D2E31ACFB00A3903E /* FirebaseAuth in Frameworks */,
+				97AF98552E31E63E00A3903E /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +73,7 @@
 			name = ecobici;
 			packageProductDependencies = (
 				97AF980C2E31ACFB00A3903E /* FirebaseAuth */,
+				97AF98542E31E63E00A3903E /* IQKeyboardManagerSwift */,
 			);
 			productName = ecobici;
 			productReference = 97AF97FD2E31AB5900A3903E /* ecobici.app */;
@@ -102,6 +105,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				97AF980B2E31ACFB00A3903E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				97AF98532E31E63E00A3903E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 97AF97FE2E31AB5900A3903E /* Products */;
@@ -345,6 +349,14 @@
 				minimumVersion = 12.0.0;
 			};
 		};
+		97AF98532E31E63E00A3903E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -352,6 +364,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 97AF980B2E31ACFB00A3903E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		97AF98542E31E63E00A3903E /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 97AF98532E31E63E00A3903E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

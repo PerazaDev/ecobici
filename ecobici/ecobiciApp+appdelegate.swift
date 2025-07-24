@@ -7,11 +7,14 @@
 
 import SwiftUI
 import Firebase
+import IQKeyboardManagerSwift
 extension ecobiciApp{
     class AppDelegate: NSObject, UIApplicationDelegate {
       func application(_ application: UIApplication,
                        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
+          IQKeyboardManager.shared.isEnabled = true
+          IQKeyboardManager.shared.resignOnTouchOutside = true
         return true
       }
     }
