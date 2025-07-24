@@ -38,7 +38,7 @@ struct StationsView: View {
                 NavigationLink{
                     StationDetailView(model: .init(id: "0", name: "CE-015 Reforma - Río Mississippi Mississippi ", latitude: 0.0, longitude: 0.0, availableBikes: 2, availablePlaces: 2))
                 }label: {
-                    Cell(model: .init(id: "0", name: "CE-015 Reforma - Río Mississippi Mississippi ", latitude: 0.0, longitude: 0.0, availableBikes: 2, availablePlaces: 2))
+                    Cell(model: .init(id: "0", name: "CE-015 Reforma - Río Mississippi Mississippi ", latitude: 0.0, longitude: 0.0, availableBikes: 0, availablePlaces: 2))
                 }
             }
         }
