@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol GetStationsUseCase{
+    func execute() async throws -> StationsDTO
+}

@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol StationRepository {
+    func getStations() async throws -> StationsDTO
+}
