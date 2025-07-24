@@ -56,7 +56,9 @@ struct StationsView: View {
         }
     }
     private func logoutAction() {
-     
+        Task{
+            await viewModel.logout()
+        }
     }
     
 }

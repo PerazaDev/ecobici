@@ -37,6 +37,14 @@ class StationsViewModel: ObservableObject{
                 debugPrint("[StationsViewModel][getStationsUseCase][Error]: \(error)")
             }
         }
-        
+    }
+    func logout() async{
+        do{
+            self.isLoading = isLoading
+            defer { self.isLoading = false }
+            try await self.logoutFirebaseUseCase.execute()
+        }catch{
+            debugPrint("[StationsViewModel][logout][Error]: \(error)")
+        }
     }
 }
