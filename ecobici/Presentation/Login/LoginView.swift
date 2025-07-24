@@ -15,8 +15,9 @@ struct LoginView: View {
     @FocusState private var isEmailFocused: Bool
     @FocusState private var isPasswordFocused: Bool
     private var isCompleted: Bool { email.isValidEmail && !password.isEmpty }
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 content
             }

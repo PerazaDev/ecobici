@@ -13,6 +13,7 @@ struct ecobiciApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject private var appState: AppState = .init()
     @State private var isLaunching: Bool = true
+    
     var body: some Scene {
         WindowGroup {
             content
@@ -26,7 +27,9 @@ struct ecobiciApp: App {
                 SplashView()
                     .onAppear{
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3){
-                            self.isLaunching = false
+                            withAnimation {
+                                self.isLaunching = false
+                            }
                         }
                     }
             }else{

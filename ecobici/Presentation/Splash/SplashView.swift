@@ -9,7 +9,13 @@ import SwiftUI
 
 struct SplashView: View {
     var body: some View {
-        Text("Hello, SplashView!")
+        VStack(spacing: 20){
+            Image("ecobici_logo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 300)
+        }
+        .padding()
     }
 }
 
