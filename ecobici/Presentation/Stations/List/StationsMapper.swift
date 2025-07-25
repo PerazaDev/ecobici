@@ -12,7 +12,7 @@ struct StationsMapper{
         return from
             .network
             .stations
-            .suffix(50)
+            .prefix(50)
             .map{
                 .init(
                     id: $0.id,
